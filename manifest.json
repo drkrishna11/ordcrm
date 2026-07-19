@@ -1,21 +1,88 @@
-{
-  "name": "SwiftOrder",
-  "short_name": "SwiftOrder",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#fff7f2",
-  "theme_color": "#ff5f6d",
-  "description": "A mobile-first order management PWA",
-  "icons": [
-    {
-      "src": "icons/icon-192.svg",
-      "sizes": "192x192",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "icons/icon-512.svg",
-      "sizes": "512x512",
-      "type": "image/svg+xml"
-    }
-  ]
-}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#ff5f6d" />
+    <meta name="description" content="Mobile-first order management PWA" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon-192.svg" />
+    <title>SwiftOrder</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero-card">
+        <div class="hero-badge">⚡ Fast & Fresh</div>
+        <h1>SwiftOrder</h1>
+        <p>VPlace orders in seconds with a polished mobile-first experience.</p>
+      </header>
+
+      <main class="container">
+        <section id="customerSection" class="card form-card">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Order Placement</p>
+              <h2>Customer Details</h2>
+            </div>
+            <span class="pill">Mobile ready</span>
+          </div>
+
+          <form id="customerForm" novalidate>
+            <label class="field">
+              <span>Customer Name</span>
+              <input id="customerName" type="text" placeholder="Enter customer name" pattern="[A-Za-z ]+" maxlength="50" autocomplete="name" required />
+            </label>
+
+            <label class="field">
+              <span>WhatsApp Number</span>
+              <input id="phone" type="tel" inputmode="numeric" placeholder="10 digits starting with 6/7/8/9" pattern="[6789][0-9]{9}" maxlength="10" required />
+            </label>
+
+            <button id="placeOrderBtn" class="primary-btn" type="button">Place Order</button>
+            <p class="helper-text">After your details are confirmed, you’ll move to the product selection screen.</p>
+          </form>
+        </section>
+
+        <section id="productsSection" class="card products-card hidden" aria-live="polite">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Step 2</p>
+              <h2>Order Items</h2>
+            </div>
+            <span class="pill accent">Add multiple</span>
+          </div>
+
+          <div id="productsList" class="products-list"></div>
+
+          <div class="sticky-actions">
+            <button id="addProductBtn" class="secondary-btn" type="button" disabled>Add Product</button>
+            <button id="submitOrderBtn" class="primary-btn" type="button">Submit Order</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay hidden" aria-hidden="true">
+      <div class="spinner-box">
+        <div class="spinner"></div>
+        <p>Placing your order...</p>
+      </div>
+    </div>
+
+    <div id="successModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-icon">✓</div>
+        <h3>Order Confirmed</h3>
+        <p>Thank you for your order.</p>
+        <p class="order-number">Order Number: <span id="orderNumber">-</span></p>
+        <button id="newOrderBtn" class="primary-btn" type="button">Place New Order</button>
+      </div>
+    </div>
+
+    <div id="toastContainer" class="toast-container" aria-live="assertive"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
