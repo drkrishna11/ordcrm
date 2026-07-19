@@ -1,0 +1,21 @@
+{
+  "name": "SwiftOrder",
+  "short_name": "SwiftOrder",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fff7f2",
+  "theme_color": "#ff5f6d",
+  "description": "A mobile-first order management PWA",
+  "icons": [
+    {
+      "src": "icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
